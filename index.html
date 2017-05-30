@@ -16,6 +16,7 @@
 			border-right: 1px solid #777;
 			padding-right: 7px;
 			display: inline;
+			white-space: pre;
 		}
 	</style>
 </head>
@@ -29,16 +30,18 @@
 			el = document.getElementById('magic'),
 			word_counter = 0,
 			character_counter = 0;
+		var backgroundColors = ["black", "maroon", "darkOliveGreen", "darkSlateBlue", "indigo", "orange"];
 
 		function updateText()
 		{
 			el.innerHTML = el.innerHTML+words[word_counter][character_counter++];
 
-			if(character_counter == words[word_counter].length)
+			if(character_counter == words[word_counter].length+1)
 			{
 				word_counter++; 	//choose a different word
 				character_counter = 0;	//start over with the first character of the word
 				el.innerHTML = '';  //set the html to be blank
+				document.body.style.backgroundColor = backgroundColors[word_counter];
 
 				//if we're displaying the last word, go back to the first word
 				if(word_counter == words.length)
@@ -46,7 +49,7 @@
 			}
 		}
 
-		setInterval(updateText,300);
+		setInterval(updateText,200);
 
 	</script>
 
